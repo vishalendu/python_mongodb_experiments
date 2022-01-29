@@ -13,10 +13,18 @@ The script has 2 Parts:<br>
     > <P>db.collection.find({"age":"20"})</P>
     If you have a mongoDB CLI or you can use any client like Robo 3T. You can get the Explain plan with executionStats using the following:<br>
     > <P>db.collection.find({"age":"20"}).explain('executionStats')</P>
+      ***Test Cases:*** <br>
+      Try1: Without any index<br>
+      Try2: With index on "age" <br>
+      
   - Second Query is an aggregate query:<br>
     > <P>db.collection.aggregate([{"$match":{"$and":[{"age":{"$lte":20}},{"gender":{"$eq":"Male"}}]}}])</P>
     This is a simple single stage aggregate with a 2 predicates to look at a compound index. If you want to check out its Explain plan with executionState:<br>
     > <P>db.collection.explain('executionStats').aggregate([{"$match":{"$and":[{"age":{"$lte":20}},{"gender":{"$eq":"Male"}}]}}])</P>
+      ***Test Cases:***<br>
+      Try1: Without any index<br>
+      Try2: With index on age<br>
+      Try3: With compound index on age,gender
 <br><br>
 
 
